@@ -1,48 +1,46 @@
 #include<iostream>
 #include "Node.h"
-#include "LinkedList.h"
+#include "MENU.h"
 using namespace std;
 int Menu(){
     int opcion;
-    do{
-        cout<<"\tMenu\n";
-        cout<<"1 - Insercion\n";
-        cout<<"2 - Mostrar\n";
-        cout<<"3 - Busqueda\n";
-        cout<<"4 - Eliminacion\n";
-        cout<<"5 - Salir\n";
+    //menu
+	while(opcion >= 1 || opcion <= 4){	
+	cout<<"1) Insercion\n";
+        cout<<"2) Mostrar\n";
+        cout<<"3) Busqueda\n";
+        cout<<"4) Eliminacion\n";
+        cout<<"5) Salir\n";
         cout<<"opcion : ";
         cin>>opcion;
         if(opcion < 1 || opcion > 4){
             system("cls");
             cout<<"Error";
             system("cls");
-        }
-    }while(opcion >= 1 || opcion <= 4);
-    return opcion;
+        }       
+    return opcion;}
 }
 int main(){
-
     int opcion;
     Node *aux = NULL ,*recorrido = NULL;
     LinkedList *lista = new LinkedList();
-    int numero = 0;
-    do{
-        cout<<"\tMenu\n";
-        cout<<"1 - Insercion\n";
-        cout<<"2 - Mostrar\n";
-        cout<<"3 - Busqueda\n";
-        cout<<"4 - Eliminacion\n";
-        cout<<"5 - Salir\n";
+    int numero = 0;    
+	while(opcion != 5){
+        cout<<"MENU\n";
+        cout<<"1) Insercion\n";
+        cout<<"2) Mostrar\n";
+        cout<<"3) Busqueda\n";
+        cout<<"4) Eliminacion\n";
+        cout<<"5) Salir\n";
         cout<<"opcion : ";
         cin>>opcion;
         if(opcion < 1 || opcion > 4){
-            system("cls");
-            cout<<"Error";
-            system("pause");
-            system("cls");
+            system("cls");// limpiar la pantalla
+ 
         }
+        //swith para la seleccio del menu de opciones:  rtc
         switch (opcion){
+        	//Insercion
             case 1: 
                 cout<<"Insercion \n\n";
                 aux = new Node();
@@ -50,8 +48,9 @@ int main(){
                 cin>>numero;
                 aux->set_elem(numero);
                 lista->Agregar(aux);
-                cout<<"Numero ha sido almacenado con exito mi querido amigo\n";
+                cout<<"Numero ha sido almacenado con exito\n";
                 break;
+            //Mostrar
             case 2: 
             cout<<"Mostrar\n\n";
             recorrido = lista->Get_cabeza();
@@ -60,37 +59,40 @@ int main(){
                     recorrido=recorrido->get_link();
                 }
                 break;
+            //Busqueda
             case 3:
                 cout<<"Busqueda\n\n";
-                cout<<"Ingrese el numero que usted desee encontrar\n";
+                cout<<"Ingrese el numero que desee encontrar\n";
                 cin>>numero;
                 recorrido = lista->Buscar(numero);
                 if(recorrido != NULL){
-                    cout<<"El numero que usted busco fue hallado "<<recorrido->get_elem()<<endl;
+                    cout<<"El numero fue hallado "<<recorrido->get_elem()<<endl;
                 }
                 else{
-                    cout<<"El numero buscado no fue encontrado en la lista\n";
+                    cout<<"El numero no fue encontrado en la lista\n";
                 }
                 break;
+            //Eliminacion
             case 4:
                 cout<<"Eliminacion\n\n";
-                cout<<"Ingrese le numero que usted desee eliminar\n";
+                cout<<"Ingrese el numero que desee eliminar\n";
                 cin>>numero;
                 recorrido = lista->Buscar(numero);
                 if(recorrido != NULL){
                     lista->Eliminar(numero);
-                    cout<<"Numero eliminado con exito mi amigo\n";
+                    cout<<"Numero eliminado con exito \n";
                 }
                 else{
-                    cout<<"El numero ingresado no existe o no se hallo\n";
+                    cout<<"El numero ingresado no existe\n";
                 }
                 break;
+            //FIN
             case 5:     
-                cout<<"Se acabo nuestro viaje al conocimiento mi amigo , pero descuida es temporal .. fuerza cientifico\n";
+                cout<<"FIN\n";
                 break;
         }
         system("pause");
         system("cls");
-    }while(opcion != 5);
+	}
     return 0; 
 }

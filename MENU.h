@@ -52,18 +52,18 @@ class LinkedList{
                 Set_cabeza(Get_cabeza()->get_link());
             }
             else{
-                while(busqueda != NULL && busqueda->get_elem() != numero){
+                while(busqueda != 0 && busqueda->get_elem() != numero){
                     anterior = busqueda;
                     busqueda = busqueda->get_link();
                 }
-                if(busqueda != NULL){
+                if(busqueda != 0){
                     anterior->set_link(busqueda->get_link());
                 }
             }
             delete busqueda;
         }
-        ~LinkedList(){
-        }
+        ~LinkedList(){}
+        
 
 
 };
